@@ -1,0 +1,19 @@
+{% extends "home/base.html" %}
+
+{% block title %}All Stock{% endblock %}
+{% block heading %}All Stock{% endblock %}
+{% block body %}
+
+{% for item in stocks %}
+                  <b><i>{{item.item.item_name}}</i></b><br>
+                  <span>Quantity</span> <span class="blue-text text-lighten-1"></span>{{item.quantity}}</span><br>
+                  <span>Description</span> <span class="blue-text text-lighten-1">{{item.item.description}}</span><br>
+                  <span>Cost Price</span> <span class="blue-text text-lighten-1">{{item.item.cost_price}}</span><br>
+                  <span>Selling Price</span> <span class="blue-text text-lighten-1">{{item.item.sell_price}}</span><br>
+                  <span>Expiry Date</span> <span class="blue-text text-lighten-1">{{item.expiry_date}}</span><br>
+                  <span>Purchase Date</span> <span class="blue-text text-lighten-1">{{item.purchase_date}}</span><br>
+                  <span>Manufacturer</span> <span class="blue-text text-lighten-1">{{item.item.manufacturer}}</span><br>
+            <br><br>      
+{% endfor %}
+{% endblock body %}
+              

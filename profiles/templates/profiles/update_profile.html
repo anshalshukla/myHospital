@@ -1,0 +1,57 @@
+{% extends "home/base.html" %}
+
+{% block title %}Update{% endblock %}
+{% block heading %}Update Patient Profile{% endblock %}
+
+{% block body %}
+<div class="row">
+  <form class="col s12" action='/profile/update_profile/' method='POST'>
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="password" name="password1" id="password1" class="validate">
+        <label for="password1" >Password</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="password" name="password2" id="password2" class="validate">
+        <label for="password2" >Confirm Password</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="text" name="contact_no" id="contact_no" class="validate" maxlength="10" required>
+        <label for="contact_no" >Contact Number</label>
+      </div>
+      <div class="input-field col s12">
+        <textarea name="address" id="address" class="materialize-textarea" required></textarea>
+        <label for="address" >Address</label>
+      </div>
+      {% if request.user.patient.dob is not '' %}
+      <div class="input-field col s6">
+        <input type="date" name="dob" id="dob" required>
+        <label for="dob" class="active">Birthdate</label>
+      </div>
+      {% endif %}
+      {% if request.user.patient.blood_group is not '' %}
+      <div class="input-field col s6">
+        <select name="blood_group" id="blood_group" class="validate" required>
+          <option value='O-'>O-</option>
+          <option value='O+'>O+</option>
+          <option value='A-'>A-</option>
+          <option value='A+'>A+</option>
+          <option value='B-'>B-</option>
+          <option value='B+'>B+</option>
+          <option value='AB-'>AB-</option>
+          <option value='AB+'>AB+</option>
+        </select>
+        <label for="blood_group" >Blood Group</label>
+      </div>
+      {% endif %}
+      <select name="gender" id="gender" class="validate" required>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Others</option>
+    </select>
+    </div>
+    <button type="submit" class="btn" >Update</button>
+  </form>
+</div>
+{% endblock %}

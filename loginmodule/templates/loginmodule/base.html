@@ -1,0 +1,30 @@
+{% load static %}
+
+<html>
+	<head>
+		<title>{% block title %} {% endblock %}</title>
+		<!--<link rel="icon" href="imageset/favicon.png">-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link rel="stylesheet" href="{% static "css/materialize.min.css" %}">
+		<!--<link rel="stylesheet" href="{% static "css/style.css" %}">-->
+		<script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+		<script src="{% static "js/materialize.min.js" %}"></script>
+
+		<script src="{% static "js/script.js" %}"></script>
+	</head>
+
+	<body>
+		{% if messages %}
+			{% for message in messages %}
+					<script>
+						Materialize.toast('{{ message }}', 3000);
+					</script>
+			{% endfor %}
+		{% endif %}
+
+	{% block content %}{% endblock %}
+</body>
+</html>

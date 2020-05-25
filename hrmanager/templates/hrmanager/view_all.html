@@ -1,0 +1,65 @@
+{% extends "home/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block heading %}Dashboard{% endblock %}
+{% block body %}
+<h5>All Doctors</h5>
+
+<div class="container">
+  <p>Total Doctors - {{ doctors|length }}</p>
+  <p>Active Doctors - {{active_doctors}}</p>
+  {% for doctor in doctors %}
+  <div class="collapsible-header blue-grey"><i class="material-icons"></i>{{doctor}}</div>
+    <div class="form-group">
+      <form action='/dashboard/update_doctor_form/{{doctor.id}}/' method="POST">
+        {%csrf_token%}
+        <button class="btn btn-outline-info" type="submit">Update Doctor</button>
+      </form>
+      <form action="/dashboard/delete_doctor/{{doctor.id}}/" method="POST">
+        {%csrf_token%}
+        <button class="btn btn-outline-danger" type="submit">Delete</button>
+      </form>
+      <br><br>
+  </div>
+  {% endfor %}
+
+</div>
+
+<hr>
+
+<h5>All Receptionists</h5>
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion">
+  {% for receptionist in receptionists %}
+  <div class="collapsible-header blue-grey"><i class="material-icons"></i>{{receptionist}}</div>
+  {% endfor %}
+</ul>
+</div>
+
+<hr>
+
+<h5>All Lab Attendants</h5>
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion">
+  {% for lab_attendant in lab_attendants %}
+  <li>
+    <div class="collapsible-header blue-grey"><i class="material-icons"></i>{{lab_attendant}}</div>
+  </li>
+  {% endfor %}
+</ul>
+</div>
+
+<hr>
+
+<h5>All Inventory Managers</h5>
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion">
+  {% for inventory_manager in inventory_managers %}
+  <li>
+    <div class="collapsible-header blue-grey"><i class="material-icons"></i>{{inventory_manager}}</div>
+  </li>>
+  {% endfor %}
+</ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Update Doctor{% endblock %}
+{% block heading %}Update Doctor{% endblock %}
+{% block body %}
+<div class="row">
+    <form class="col s12" action='/dashboard/update_doctor/{{doctor.id}}/' method='POST'>
+        {% csrf_token %}
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" name="contact_no" id="contact_no" class="validate" maxlength="10" required>
+                <label for="contact_no" >Contact Number</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea name="address" id="address" class="materialize-textarea" required></textarea>
+                <label for="address" >Address</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea name="age" id="age" class="materialize-textarea" required></textarea>
+                <label for="age" >Age</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea name="outstanding" id="outstanding" class="materialize-textarea" required></textarea>
+                <label for="outstanding" >Outstanding</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea name="paid" id="paid" class="materialize-textarea" required></textarea>
+                <label for="paid" >Paid</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="blood_group" id="blood_group" class="validate" required>
+                  <option value='O-'>O-</option>
+                  <option value='O+'>O+</option>
+                  <option value='A-'>A-</option>
+                  <option value='A+'>A+</option>
+                  <option value='B-'>B-</option>
+                  <option value='B+'>B+</option>
+                  <option value='AB-'>AB-</option>
+                  <option value='AB+'>AB+</option>
+                </select>
+                <label for="blood_group" >Blood Group</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="gender" id="gender" class="validate" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Others</option>
+                </select>
+            </div>
+            <div class="input-field col s6">
+                <select name="status" id="status" class="validate" required>
+                    <option value="True">Active</option>
+                    <option value="False">Inactive</option>
+                </select>
+            </div>
+        </div>
+            <button type="submit" class="btn" >Update</button>
+        </form>
+</div>
+
+{% endblock %}
